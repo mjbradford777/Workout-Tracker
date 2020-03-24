@@ -1,0 +1,24 @@
+{
+  "name": "workout-tracker",
+  "version": "1.0.0",
+  "description": "A MongoDB powered workout tracker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjbradford777/Workout-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjbradford777/Workout-Tracker/issues"
+  },
+  "homepage": "https://github.com/mjbradford777/Workout-Tracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.4"
+  }
+}
