@@ -13,14 +13,14 @@
             <br>
             <h2>Add a Workout</h2>
             <br>
-            <form action="/submit" method="post">
-                <input type="text" name="title" placeholder="Workout Title">
-                <input type="text" name="weight" placeholder="User Current Weight (in lbs)">
-                <input type="text" name="calories" placeholder="Current Calorie Intake">
-                <textarea type="text" name="exercise" placeholder="Enter Exercise"></textarea>
+            <form>
+                <input type="text" name="title" id="title" placeholder="Workout Title">
+                <input type="text" name="weight" id="weight" placeholder="User Current Weight (in lbs)">
+                <input type="text" name="calories" id="calories" placeholder="Current Calorie Intake">
+                <textarea type="text" name="exercise" class="exercise" id="0" placeholder="Enter Exercise"></textarea>
                 <button id="more">Add Another Exercise</button>
                 <div id="moreExercises"></div>
-                <input type="submit">
+                <button id="submit">Submit</button>
             </form>
 
             <script src="js/add.js"></script>

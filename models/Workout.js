@@ -5,11 +5,7 @@ const WorkoutSchema = new Schema({
     title: String,
     weight: String,
     calories: String,
-    workout: [
-        {
-            exercise: String
-        }
-    ]
+    workout: Array
 })
 
 const Workout = mongoose.model('Workout', WorkoutSchema);

@@ -26,9 +26,9 @@ app.get('/view', (req, res) => {
 
 app.post('/submit', ({ body }, res) => {
     Workout.create(body)
-        .then(res.redirect('/view'))
+        .then(res.json('success'))
         .catch(err => {
-            res.json(err);
+            console.log(err);
         })
 });
 
