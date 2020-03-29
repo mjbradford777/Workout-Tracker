@@ -29,7 +29,8 @@ $(document).ready(function() {
 
     $(document).click(function() {
         console.log('test');
-        if ($(event.target).children('.render')) {
+        console.log($(event.target));
+        if ($(event.target)[0].hasClass('render')) {
             console.log('click');
             $.get(`/update/${$(event.target).id}`, function(data, status) {
                 console.log(data);
