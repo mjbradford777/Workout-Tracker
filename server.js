@@ -24,6 +24,16 @@ app.get('/view', (req, res) => {
         })
 });
 
+app.get('/update/:id', (req, res) => {
+    Workout.findOne({ '_id': req.params.id })
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
 app.post('/submit', ({ body }, res) => {
     Workout.create(body)
         .then(res.json('success'))
