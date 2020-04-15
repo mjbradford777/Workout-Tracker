@@ -5,6 +5,7 @@ $(document).ready(function() {
     let calories;
     let workouts;
     let button;
+    let refID;
 
     $.get('/view', function(data, status) {
         data.forEach(element => {
@@ -15,7 +16,7 @@ $(document).ready(function() {
             weight = (`<p>Weight: ${element.weight}</p>`);
             calories = (`<p>Caloric Intake: ${element.calories}</p>`);
             workouts = (`<ul id="${element._id}workouts"></ul>`);
-            button = (`<button id="${element._id} class="render">Update</button>`);
+            button = (`<button id="${element._id}" class="render">Update</button>`);
             $(`#${element._id}Div`).append(title);
             $(`#${element._id}Div`).append(weight);
             $(`#${element._id}Div`).append(calories);
@@ -30,9 +31,10 @@ $(document).ready(function() {
     $(document).click(function() {
         console.log('test');
         console.log($(event.target));
-        if ($(event.target)[0].hasClass('render')) {
+        if ($(event.target)[0].className === 'render') {
             console.log('click');
-            $.get(`/update/${$(event.target).id}`, function(data, status) {
+            console.log($(event.target)[0].id)
+            $.get(`/update/${$(event.target)[0].id}`, function(data, status) {
                 console.log(data);
                 $('#loadingzone').empty();
                 newDiv = (`<div id="${data._id}UpdateDiv"></div>`)
@@ -43,14 +45,22 @@ $(document).ready(function() {
                 $(`#${data._id}UpdateDiv`).append(title);
                 $(`#${data._id}UpdateDiv`).append(weight);
                 $(`#${data._id}UpdateDiv`).append(calories);
-                for (let i = 0; i < data.workouts.length; i++) {
-                    $(`#${data._id}UpdateDiv`).append(`<textarea type="text" name="exercise" class="exercise" id="0" value="${data.workouts[i]}"></textarea>`)
+                for (let i = 0; i < data.workout.length; i++) {
+                    $(`#${data._id}UpdateDiv`).append(`<textarea type="text" name="exercise" class="exercise" id="${i}">${data.workout[i]}</textarea>`)
                 }
                 button = ('<button id="more">Add Another Exercise</button>');
                 $(`#${data._id}UpdateDiv`).append(button);
-                button = (`<button id="${element._id} class="update">Submit</button>`);
+                button = (`<button id="${data._id}" class="update">Submit</button>`);
                 $(`#${data._id}UpdateDiv`).append(button);
             })
+        } else if ($(event.target)[0].id === 'more') {
+            for (let i = 0; i < $(event.target)[0].parentElement.children.length; i++) {
+                if ($(event.target)[0].parentElement.children[i].type === 'textarea') {
+                    refID = parseInt($(event.target)[0].parentElement.children[i].id);
+                }
+            }
+            refID++;
+            $(event.target)[0].parentElement.append(`<textarea type="text" name="exercise" class="exercise" placeholder="Enter Exercise" id="${refID}"></textarea>`);
         }
     })
 })
