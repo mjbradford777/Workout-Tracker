@@ -43,7 +43,7 @@ app.post('/submit', ({ body }, res) => {
 });
 
 app.post('/resubmit', ({ body }, res) => {
-    Workout.findOneAndUpdate({ '_id': req.params.id }, { body }, { new: true })
+    Workout.findOneAndUpdate({ '_id': body._id }, { '_id': body._id, 'title': body.title, 'weight': body.weight, 'calories': body.calories, 'workout': body.workout }, { new: true })
     .then(dbWorkout => {
         res.json(dbWorkout);
     })

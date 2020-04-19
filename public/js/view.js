@@ -12,7 +12,6 @@ $(document).ready(function() {
 
     $.get('/view', function(data, status) {
         data.forEach(element => {
-            console.log(element);
             newDiv = (`<div id="${element._id}Div"></div>`);
             $('#loadingzone').append(newDiv);
             title = (`<h3>${element.title}</h3>`);
@@ -32,13 +31,9 @@ $(document).ready(function() {
     })
 
     $(document).click(function() {
-        console.log('test');
-        console.log($(event.target));
         if ($(event.target)[0].className === 'render') {
-            console.log('click');
             console.log($(event.target)[0].id)
             $.get(`/update/${$(event.target)[0].id}`, function(data, status) {
-                console.log(data);
                 $('#loadingzone').empty();
                 newDiv = (`<div id="${data._id}UpdateDiv" class="updateDiv"></div>`)
                 $('#loadingzone').append(newDiv);
@@ -70,13 +65,11 @@ $(document).ready(function() {
             $(textarea).insertAfter(`#${refID - 1}`);
             count++;
         } else if ($(event.target)[0].className === 'update') {
-            console.log($(event.target)[0].id);
             let exerciseArr = [];
             for (let i = 0; i < count; i++) {
                 exerciseArr.push($(`#${i}`).val());
             }
-            console.log(exerciseArr);
-            $.post('/submit', {
+            $.post('/resubmit', {
                 _id: $(event.target)[0].id,
                 title: $('#title').val(),
                 weight: $('#weight').val(),
@@ -84,7 +77,7 @@ $(document).ready(function() {
                 workout: exerciseArr
             }, function(data) {
                 console.log(data);
-                // location.reload();
+                location.reload();
             })
         }
     })
