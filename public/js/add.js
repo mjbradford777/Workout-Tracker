@@ -4,7 +4,10 @@ $(document).ready(function() {
 
     $('#more').click(function() {
         event.preventDefault();
-        $('#moreExercises').append(`<textarea type="text" name="exercise" class="exercise" id="${count}" placeholder="Enter Exercise"></textarea>`);
+        $('#moreExercises').append(`<div class="form-group" id="formGroup${count}"></div>`);
+        $(`#formGroup${count}`).append(`<label for="${count}">Exercise ${count + 1}</label>`);
+        $(`#formGroup${count}`).append(`<textarea type="text" name="exercise" class="exercise form-control" id="${count}" rows="3" placeholder="Enter Exercise"></textarea>`);
+        $('<div class="col-sm-1"></div>').insertAfter(`#formGroup${count}`);
         count++;
     });
 

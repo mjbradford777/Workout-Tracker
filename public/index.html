@@ -5,14 +5,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Workout Tracker</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/index.css">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     </head>
 
     <body>
-        <h1>Welcome to Workout Trakcer!</h1>
-        <br>
-        <br>
-        <a href="view.html"><button id="view">View your workouts</button></a>
-        <a href="add.html"><button id="add">Add a new workout</button></a>
+        <div class="container">
+            <div class="row justify-content-center">
+                <h1>Welcome to Workout Trakcer!</h1>
+            </div>
+            <br>
+            <br>
+            <div class="row justify-content-center">
+                <a href="view.html"><button class="btn btn-warning" id="view">View your workouts</button></a>
+                <div class="col-sm-1"></div>
+                <a href="add.html"><button class="btn btn-warning" id="add">Add a new workout</button></a>
+            </div>
+        </div>
     </body>
 </html>
