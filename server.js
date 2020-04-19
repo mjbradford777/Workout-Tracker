@@ -42,6 +42,16 @@ app.post('/submit', ({ body }, res) => {
         })
 });
 
+app.post('/resubmit', ({ body }, res) => {
+    Workout.findOneAndUpdate({ '_id': req.params.id }, { body }, { new: true })
+    .then(dbWorkout => {
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });
